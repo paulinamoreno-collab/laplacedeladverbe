@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Posición del Adverbio en Francés</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .presentation {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            min-height: 600px;
+            padding: 60px;
+            animation: fadeIn 0.5s;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Slide 1 - Portada */
+        .slide-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            justify-content: center !important;
+        }
+
+        .slide-1 h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .slide-1 p {
+            font-size: 1.5em;
+            opacity: 0.95;
+        }
+
+        /* Slide 2 - Introducción */
+        .slide-2 {
+            background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%);
+        }
+
+        .slide-2 h2 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #764ba2;
+            padding-bottom: 15px;
+        }
+
+        .slide-2 .content {
+            font-size: 1.4em;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        /* Slides de contenido */
+        .content-slide h2 {
+            color: #764ba2;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 6px solid #667eea;
+        }
+
+        .content-slide h3 {
+            color: #5a67d8;
+            font-size: 1.6em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-slide h4 {
+            color: #6b46c1;
+            font-size: 1.3em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .regla {
+            background: #f0f4ff;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+            font-size: 1.2em;
+        }
+
+        .ejemplo {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 20px 25px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #f59e0b;
+        }
+
+        .ejemplo-titulo {
+            color: #d97706;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .frances {
+            color: #1f2937;
+            font-style: italic;
+            font-size: 1.3em;
+            margin: 8px 0;
+        }
+
+        .traduccion {
+            color: #059669;
+            font-style: italic;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        /* Slide final */
+        .slide-final {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        }
+
+        .slide-final h2 {
+            color: #1e40af;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .slide-final ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .slide-final li {
+            padding: 15px 0 15px 40px;
+            position: relative;
+            font-size: 1.3em;
+            color: #333;
+        }
+
+        .slide-final li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        /* Controles de navegación */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #f3f4f6;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .slide-counter {
+            color: #64748b;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Portada -->
+        <div class="slide slide-1 active">
+            <h1>La Posición del Adverbio en Francés</h1>
+            <p>Place de l'adverbe</p>
+        </div>
+
+        <!-- Slide 2: Introducción -->
+        <div class="slide slide-2">
+            <h2>Introducción</h2>
+            <div class="content">
+                <p>El adverbio en francés puede modificar diferentes elementos de la oración:</p>
+                <br>
+                <p>• Un adjetivo calificativo<br>
+                • Otro adverbio<br>
+                • Una frase completa<br>
+                • Un verbo</p>
+                <br>
+                <p>La posición del adverbio varía según el elemento que modifica.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Adverbio modifica adjetivo -->
+        <div class="slide content-slide">
+            <h2>1. El adverbio modifica un adjetivo</h2>
+            <div class="regla">
+                <strong>Regla:</strong> El adverbio se coloca <strong>antes del adjetivo</strong>
+            </div>
+            <div class="ejemplo">
+                <div class="ejemplo-titulo">Ejemplo:</div>
+                <div class="frances">Il a un équipement particulièrement performant.</div>
+                <div class="traduccion">(Él tiene un equipo particularmente eficiente.)</div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Adverbio modifica adverbio -->
+        <div class="slide content-slide">
+            <h2>2. El adverbio modifica otro adverbio</h2>
+            <div class="regla">
+                <strong>Regla:</strong> El adverbio se coloca <strong>antes del adverbio</strong> que modifica
+            </div>
+            <div class="ejemplo">
+                <div class="ejemplo-titulo">Ejemplos:</div>
+                <div class="frances">Nous avons bien assez mangé.</div>
+                <div class="traduccion">(Hemos comido bastante bien.)</div>
+            </div>
+            <div class="ejemplo">
+                <div class="frances">Très poliment, il m'a répondu que je m'étais trompée d'adresse.</div>
+                <div class="traduccion">(Muy educadamente, me respondió que me había equivocado de dirección.)</div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Adverbio modifica frase -->
+        <div class="slide content-slide">
+            <h2>3. El adverbio modifica una frase</h2>
+            <div class="regla">
+                <strong>Regla:</strong> El adverbio puede colocarse al <strong>principio o al final</strong> de la frase
+            </div>
+            <div class="ejemplo">
+                <div class="ejemplo-titulo">Ejemplo:</div>
+                <div class="frances">Nous sommes allés au restaurant hier.</div>
+                <div class="traduccion">(Fuimos al restaurante ayer.)</div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Adverbio modifica verbo - tiempos simples -->
+        <div class="slide content-slide">
+            <h2>4. El adverbio modifica un verbo</h2>
+            <h3>4.1 En tiempos simples</h3>
+            <div class="ejemplo">
+                <div class="ejemplo-titulo">Ejemplos:</div>
+                <div class="frances">Elle m'aidera de temps en temps.</div>
+                <div class="traduccion">(Ella me ayudará de vez en cuando.)</div>
+            </div>
+            <div class="ejemplo">
+                <div class="frances">Je l'aimais énormément.</div>
+                <div class="traduccion">(Lo/la amaba enormemente.)</div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Tiempos compuestos - después del participio -->
+        <div class="slide content-slide">
+            <h2>4.2 En tiempos compuestos</h2>
+            <h4>a) Después del participio pasado</h4>
+            <div class="regla">
+                Algunos adverbios se colocan <strong>después del participio pasado</strong>
+            </div>
+            <div class="ejemplo">
+                <div class="ejemplo-titulo">Ejemplo:</div>
+                <div class="frances">Il a conduit lentement.</div>
+                <div class="traduccion">(Él condujo lentamente.)</div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Entre auxiliar y participio -->
+        <div class="slide content-slide">
+            <h2>4.2 En tiempos compuestos</h2>
+            <h4>b) Entre el auxiliar y el participio pasado</h4>
+            <div class="regla">
+                Algunos adverbios se colocan <strong>entre el auxiliar y el participio</strong>
+            </div>
+            <div class="ejemplo">
+                <div class="ejemplo-titulo">Ejemplo:</div>
+                <div class="frances">J'ai tellement aimé ce livre que je l'ai relu trois fois.</div>
+                <div class="traduccion">(Me gustó tanto este libro que lo he releído tres veces.)</div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Posición flexible -->
+        <div class="slide content-slide">
+            <h2>4.2 En tiempos compuestos</h2>
+            <h4>c) Posición flexible</h4>
+            <div class="regla">
+                Muchos adverbios pueden colocarse <strong>indistintamente</strong> en ambas posiciones
+            </div>
+            <div class="ejemplo">
+                <div class="ejemplo-titulo">Ejemplos:</div>
+                <div class="frances">J'ai longuement réfléchi. / J'ai réfléchi longuement.</div>
+                <div class="traduccion">(He reflexionado largamente.)</div>
+            </div>
+            <div class="ejemplo">
+                <div class="frances">Nous nous sommes souvent revus. / Nous nous sommes revus souvent.</div>
+                <div class="traduccion">(Nos hemos vuelto a ver a menudo.)</div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Conclusión -->
+        <div class="slide slide-final">
+            <h2>Conclusión</h2>
+            <div class="content">
+                <p style="font-size: 1.2em; margin-bottom: 25px; color: #333;">La posición del adverbio en francés depende de:</p>
+                <ul>
+                    <li>El elemento que modifica (adjetivo, adverbio, verbo o frase)</li>
+                    <li>El tiempo verbal utilizado (simple o compuesto)</li>
+                    <li>El tipo específico de adverbio</li>
+                </ul>
+                <p style="font-size: 1.2em; margin-top: 30px; color: #333; text-align: center;">
+                    <strong>Algunos adverbios tienen posiciones fijas, mientras que otros permiten flexibilidad.</strong>
+                </p>
+                <div style="margin-top: 40px; padding: 20px; background: white; border-radius: 10px; border-top: 3px solid #3b82f6; text-align: center;">
+                    <p style="font-size: 1em; color: #64748b;"><strong>Fuente:</strong> Dictionnaire Le Robert</p>
+                    <p style="font-size: 0.9em; color: #64748b; margin-top: 5px;">
+                        <a href="https://dictionnaire.lerobert.com/guide/place-de-l-adverbe" target="_blank" style="color: #3b82f6; text-decoration: none;">
+                            https://dictionnaire.lerobert.com/guide/place-de-l-adverbe
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controles -->
+        <div class="controls">
+            <button class="btn" id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
+            <span class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">10</span>
+            </span>
+            <button class="btn" id="nextBtn" onclick="changeSlide(1)">Siguiente →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const currentSlideSpan = document.getElementById('currentSlide');
+        const totalSlidesSpan = document.getElementById('totalSlides');
+
+        totalSlidesSpan.textContent = totalSlides;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            if (n >= totalSlides) {
+                currentSlide = totalSlides - 1;
+            } else if (n < 0) {
+                currentSlide = 0;
+            } else {
+                currentSlide = n;
+            }
+
+            slides[currentSlide].classList.add('active');
+            currentSlideSpan.textContent = currentSlide + 1;
+
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        showSlide(0);
+    </script>
+</body>
+</html>
